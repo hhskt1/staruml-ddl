@@ -112,7 +112,7 @@ class DDLGenerator {
     var self = this
     var line = self.getId(elem.name, options)
     var _type = elem.getTypeString()
-	var _documentation = elem.getDocumentationString()
+	var _documentation = elem.documentation()
     if (_type.trim().length === 0) {
       _type = 'INTEGER'
     }
