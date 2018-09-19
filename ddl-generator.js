@@ -112,6 +112,7 @@ class DDLGenerator {
     var self = this
     var line = self.getId(elem.name, options)
     var _type = elem.getTypeString()
+	var _documentation = elem.getDocumentationString()
     if (_type.trim().length === 0) {
       _type = 'INTEGER'
     }
@@ -119,6 +120,10 @@ class DDLGenerator {
     if (elem.primaryKey || !elem.nullable) {
       line += ' NOT NULL'
     }
+	if(_documentation.indexOf("AUTO_INCREMENT") != -1){
+		line += ' NOT NULL AUTO_INCREMENT'
+	}
+	line += ' COMMENT \''+_documentation+'\''
     return line
   }
 
